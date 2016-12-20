@@ -1,0 +1,18 @@
+<template>
+    <div class="panel">
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+                <label>
+                    Search
+                    <input type="text" change.trigger="onSearch($event)">
+                </label>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <label>
+                    Include Completed
+                    <input type="checkbox" click.trigger="onIncludeCompleted($event)">
+                </label>
+            </div>
+        </div>
+    </div>
+</template>

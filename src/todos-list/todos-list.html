@@ -1,0 +1,17 @@
+<template>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Completed</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr repeat.for="todo of todos">
+                <td>
+                    <input type="checkbox" checked.bind="todo.isCompleted">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</template>
