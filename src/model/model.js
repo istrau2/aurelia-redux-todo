@@ -3,4 +3,5 @@
  */
 
 export * from './action-types';
-export * from './reducers/root';
+export {default as rootReducer} from './reducers/root';
+export * from './store';

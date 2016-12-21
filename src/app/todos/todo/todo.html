@@ -1,0 +1,13 @@
+<template>
+    <td>
+        <input type="checkbox" checked.one-way="todo.isCompleted" click.trigger="toggleCompleted()">
+    </td>
+    <td>
+        ${todo.name}
+    </td>
+    <td>
+        <button type="button" class="btn btn-danger" click.delegate="remove()">
+            <i class="fa fa-trash-o"></i>
+        </button>
+    </td>
+</template>

@@ -14,7 +14,7 @@ export function filters(state, action) {
         case UPDATE_FILTERS:
             return {
                 ...state,
-                ...action.payload
+                ...action.payload.values
             };
         default:
             return state || initialState;

@@ -3,21 +3,20 @@
  */
 
 import {inject} from 'aurelia-framework';
-import {Store} from 'aurelia-redux-plugin';
-import {UPDATE_TODO} from '../model/model';
+import {ADD_TODO, Store} from 'model';
 
 @inject(Store)
-export class TodosListCustomElement {
+export class TodosCustomElement {
     constructor(store) {
         this.store = store;
     }
 
-    activate() {
+    bind() {
         this.update();
         this.unsubcribe = this.store.subscribe(this.update.bind(this));
     }
 
-    deactivate() {
+    unbind() {
         this.unsubcribe();
     }
 
@@ -25,17 +24,19 @@ export class TodosListCustomElement {
         const newState = this.store.getState();
 
         this.todos = newState.todos;
+        this.filters = newState.filters;
     }
 
-    toggleCompleted(index) {
+    addTodo() {
         this.store.dispatch({
-            type: UPDATE_TODO,
+            type: ADD_TODO,
             payload: {
-                index,
-                values: {
-                    isCompleted: !this.todos[index].isCompleted
+                todo: {
+                    name: this.newTodoName,
+                    isComplete: false
                 }
             }
         });
+        this.newTodoName = undefined;
     }
 }

@@ -2,44 +2,46 @@
  * Created by istrauss on 12/20/2016.
  */
 
-import actionTypes from '../model/model';
 import {inject} from 'aurelia-framework';
-import {Store} from 'aurelia-redux-plugin';
+import {UPDATE_FILTERS, Store} from 'model';
 
 @inject(Store)
-export class TodosListCustomElement {
+export class FiltersCustomElement {
     constructor(store) {
         this.store = store;
     }
 
-    activate() {
+    bind() {
         this.update();
         this.unsubcribe = this.store.subscribe(this.update.bind(this));
     }
 
-    deactivate() {
+    unbind() {
         this.unsubcribe();
     }
 
     update() {
         const newState = this.store.getState();
-        this.filters = newState.filters;
+        Object.assign(this, newState.filters);
     }
 
-    onIncludeCompleted(evt) {
-        this.store.dispatch({
-            type: actionTypes.UPDATE_FILTERS,
-            payload: {
-                includeCompleted: evt.target.checked
-            }
+    toggleIncludeCompleted(evt) {
+        this.updateFilters({
+            includeCompleted: evt.target.checked
         });
     }
 
     onSearch(evt) {
+        this.updateFilters({
+            searchBy: evt.target.value
+        });
+    }
+
+    updateFilters(newFilters) {
         this.store.dispatch({
-            type: actionTypes.UPDATE_FILTERS,
+            type: UPDATE_FILTERS,
             payload: {
-                searchBy: evt.target.value
+                values: newFilters
             }
         });
     }
