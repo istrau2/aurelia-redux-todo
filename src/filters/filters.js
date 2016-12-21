@@ -2,6 +2,7 @@
  * Created by istrauss on 12/20/2016.
  */
 
+import actionTypes from '../model/model';
 import {inject} from 'aurelia-framework';
 import {Store} from 'aurelia-redux-plugin';
 
@@ -22,7 +23,24 @@ export class TodosListCustomElement {
 
     update() {
         const newState = this.store.getState();
+        this.filters = newState.filters;
+    }
 
-        this.todos = newState.todos;
+    onIncludeCompleted(evt) {
+        this.store.dispatch({
+            type: actionTypes.UPDATE_FILTERS,
+            payload: {
+                includeCompleted: evt.target.checked
+            }
+        });
+    }
+
+    onSearch(evt) {
+        this.store.dispatch({
+            type: actionTypes.UPDATE_FILTERS,
+            payload: {
+                searchBy: evt.target.value
+            }
+        });
     }
 }

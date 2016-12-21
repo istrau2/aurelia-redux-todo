@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-framework';
-import {Store} from 'aurelia-redux-plugin';
+import {Store, root} from 'model';
 
 @inject(Store)
 export class App {
@@ -8,6 +8,8 @@ export class App {
     }
 
     activate() {
+        const storeMiddleware = window.env === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() : undefined;
+        this.store.init(root, undefined, storeMiddleware);
         this.update();
         this.unsubcribe = this.store.subscribe(this.update.bind(this));
     }

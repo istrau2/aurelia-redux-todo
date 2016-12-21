@@ -21,15 +21,15 @@ import copyFiles from '@easy-webpack/config-copy-files'
 import uglify from '@easy-webpack/config-uglify'
 import generateCoverage from '@easy-webpack/config-test-coverage-istanbul'
 
-process.env.BABEL_ENV = 'webpack'
-const ENV = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() || (process.env.NODE_ENV = 'development')
+process.env.BABEL_ENV = 'webpack';
+const ENV = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() || (process.env.NODE_ENV = 'development');
 
 // basic configuration:
-const title = 'Aurelia Navigation Skeleton'
-const baseUrl = '/'
-const rootDir = path.resolve()
-const srcDir = path.resolve('src')
-const outDir = path.resolve('dist')
+const title = 'Aurelia Navigation Skeleton';
+const baseUrl = '/';
+const rootDir = path.resolve();
+const srcDir = path.resolve('src');
+const outDir = path.resolve('dist');
 
 const coreBundles = {
   bootstrap: [
@@ -66,7 +66,7 @@ const coreBundles = {
     'aurelia-templating-router',
     'aurelia-templating-resources'
   ]
-}
+};
 
 /**
  * Main Webpack Configuration

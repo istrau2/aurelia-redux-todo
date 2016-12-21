@@ -3,8 +3,6 @@ import '../styles/styles.css';
 import 'font-awesome/css/font-awesome.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap';
-import {createStore} from 'redux';
-import {root} from './reducers/reducers';
 
 // comment out if you don't want a Promise polyfill (remove also from webpack.common.js)
 import * as Bluebird from 'bluebird';
@@ -16,16 +14,7 @@ export async function configure(aurelia) {
 
     if (window.env === 'development') {
         aurelia.use
-            .developmentLogging()
-            .plugin('aurelia-redux-plugin', {
-                store: createStore(root, undefined, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-            });
-    }
-    else {
-        aurelia.use
-            .plugin('aurelia-redux-plugin', {
-                store: createStore(root)
-            });
+            .developmentLogging();
     }
 
   // Uncomment the line below to enable animation.

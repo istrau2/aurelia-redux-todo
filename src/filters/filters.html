@@ -4,13 +4,13 @@
             <div class="col-sm-6 col-md-4">
                 <label>
                     Search
-                    <input type="text" change.trigger="onSearch($event)">
+                    <input type="text" change.trigger="onSearch($event) & throttle:500" value.one-way="filters.searchBy">
                 </label>
             </div>
             <div class="col-sm-6 col-md-4">
                 <label>
                     Include Completed
-                    <input type="checkbox" click.trigger="onIncludeCompleted($event)">
+                    <input type="checkbox" click.trigger="onIncludeCompleted($event)" value.one-way="includeCompleted">
                 </label>
             </div>
         </div>
