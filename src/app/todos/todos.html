@@ -1,6 +1,6 @@
 <template>
     <require from="./todo/todo"></require>
-    <require from="./filter-todos-value-converter"></require>
+    <require from="./todos-value-converters"></require>
     <table class="table table-hover">
         <thead>
             <tr>
@@ -10,7 +10,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr repeat.for="todo of todos | filterTodos:filters" as-element="todo" todo.bind="todo" index.bind="$index">
+            <tr repeat.for="todo of todos | visibleTodos" as-element="todo" todo.bind="todo">
             <tr>
                 <td colspan="3">
                     <input type="text" value.bind="newTodoName">
@@ -21,4 +21,6 @@
             </tr>
         </tbody>
     </table>
+    Showing ${todos | visibleTodosCount} of ${todos.length}
+    ${todos[3].isVisible}
 </template>

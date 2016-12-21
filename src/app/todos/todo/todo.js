@@ -9,21 +9,18 @@ import {UPDATE_TODO, REMOVE_TODO, Store} from 'model';
 export class TodoCustomElement {
 
     @bindable todo;
-    @bindable index;
 
     constructor(store) {
         this.store = store;
     }
 
-    bind() {
-        console.log(this.index);
-    }
+    bind() {}
 
     toggleCompleted() {
         this.store.dispatch({
             type: UPDATE_TODO,
             payload: {
-                index: this.index,
+                index: this.getIndex(),
                 values: {
                     isCompleted: !this.todo.isCompleted
                 }
@@ -35,8 +32,17 @@ export class TodoCustomElement {
         this.store.dispatch({
             type: REMOVE_TODO,
             payload: {
-                index: this.index
+                index: this.getIndex()
             }
         });
+    }
+
+    getIndex() {
+        const todos = this.store.getState().todos;
+        for(let i = 0; i < todos.length; i++) {
+            if (todos[i] === this.todo) {
+                return i;
+            }
+        }
     }
 }

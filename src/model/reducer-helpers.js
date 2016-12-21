@@ -19,6 +19,6 @@ export default class ReducerHelpers {
                 ...update.values
             };
             return _arr.slice(0, update.index).concat(newArrElem).concat(_arr.slice(update.index + 1));
-        });
+        }, arr.slice(0));
     }
 }

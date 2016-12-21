@@ -2,7 +2,7 @@
  * Created by istrauss on 12/20/2016.
  */
 
-import {inject} from 'aurelia-framework';
+import {inject, BindingEngine} from 'aurelia-framework';
 import {ADD_TODO, Store} from 'model';
 
 @inject(Store)
@@ -22,9 +22,7 @@ export class TodosCustomElement {
 
     update() {
         const newState = this.store.getState();
-
         this.todos = newState.todos;
-        this.filters = newState.filters;
     }
 
     addTodo() {
@@ -33,7 +31,7 @@ export class TodosCustomElement {
             payload: {
                 todo: {
                     name: this.newTodoName,
-                    isComplete: false
+                    isCompleted: false
                 }
             }
         });

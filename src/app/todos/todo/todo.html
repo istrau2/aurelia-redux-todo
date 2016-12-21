@@ -1,6 +1,7 @@
 <template>
     <td>
-        <input type="checkbox" checked.one-way="todo.isCompleted" click.trigger="toggleCompleted()">
+        ${todo.isCompleted}
+        <input type="checkbox" checked.one-way="todo.isCompleted" change.trigger="toggleCompleted()">
     </td>
     <td>
         ${todo.name}
