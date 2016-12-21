@@ -14,8 +14,6 @@ export class TodoCustomElement {
         this.store = store;
     }
 
-    bind() {}
-
     toggleCompleted() {
         this.store.dispatch({
             type: UPDATE_TODO,

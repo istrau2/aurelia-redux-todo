@@ -2,11 +2,6 @@
  * Created by istrauss on 12/21/2016.
  */
 
-export class VisibleTodosValueConverter {
-    toView(todos = []) {
-        return todos.filter(todo => todo.isVisible);
-    }
-}
 
 export class VisibleTodosCountValueConverter {
     toView(todos = []) {
